@@ -7,5 +7,5 @@ app.get('/', (_req: Request, res: Response) => {
 });
 
 app.listen(80, () => {
-
+    console.log('App is running');
 });
