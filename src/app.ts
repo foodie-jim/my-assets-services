@@ -6,6 +6,6 @@ app.get('/', (_req: Request, res: Response) => {
     res.send('Hello World');
 });
 
-app.listen(80, () => {
-    console.log('App is running');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('my-assets-services is running');
 });
