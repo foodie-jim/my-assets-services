@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import morganMiddleware from './configurations/morgan-middleware';
 import controllers from './controllers';
+import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 
@@ -9,6 +10,18 @@ app.use(morganMiddleware);
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static("public"));
+
+app.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+        swaggerOptions: {
+            url: "/swagger.json",
+        },
+    })
+);
 
 app.get('/', (_req: Request, res: Response) => {
 
