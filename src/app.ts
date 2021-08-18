@@ -31,7 +31,7 @@ app.get('/', (_req: Request, res: Response) => {
 for (let controller of controllers) {
     
     const apiController = new controller();
-    app.use('/api' + apiController.service, apiController.router);
+    app.use(apiController.service, apiController.router);
 }
 
 app.listen(process.env.PORT || 4000, () => {

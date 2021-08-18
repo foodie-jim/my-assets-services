@@ -5,7 +5,20 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"Test": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {}
 	},
 	"info": {
@@ -17,7 +30,27 @@
 		"contact": {}
 	},
 	"openapi": "3.0.0",
-	"paths": {},
+	"paths": {
+		"/api/exchange-rates": {
+			"get": {
+				"operationId": "GetExchangeRates2",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Test"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
 	"servers": [
 		{
 			"url": "/"

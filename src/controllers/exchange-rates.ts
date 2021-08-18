@@ -3,18 +3,22 @@ import IApiController from './api-controller';
 import Api from './api';
 import { Get, Route } from "tsoa";
 
-@Route('exchange-rates')
+
+interface Test {
+    message: string
+}
+
+@Route('/api/exchange-rates')
 class ExchangeRates implements IApiController {
 
     router: Router = Router();
-    service: string = '/exchange-rates';
+    service: string = '/api/exchange-rates';
 
     constructor() {
         
         this.router.get('/', this.getExchangeRates);
     }
 
-    @Get('/')
     public getExchangeRates (req: Request, res: Response) {
 
         const response = {
@@ -22,6 +26,14 @@ class ExchangeRates implements IApiController {
         };
 
         Api.ok(req, res, response);
+    }
+
+    @Get('/')
+    public async getExchangeRates2 (): Promise<Test> {
+
+        return {
+            message: 'test'
+        };
     }
 }
 
