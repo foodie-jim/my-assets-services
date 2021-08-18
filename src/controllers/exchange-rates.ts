@@ -3,7 +3,6 @@ import IApiController from './api-controller';
 import Api from './api';
 import { Get, Route } from 'tsoa';
 
-
 interface Test {
     message: string
 }
@@ -16,18 +15,48 @@ class ExchangeRates implements IApiController {
 
     constructor() {
         
-        this.router.get('/', this.getExchangeRates);
+        this.router.get('/', this.getExchangeRates.bind(this));
+        //this.router.get('/', this.getExchangeRates);
     }
 
-    public async getExchangeRates (req: Request, res: Response) {
+    // Separate files
+    // Business logic
+    // Data-models
 
-        const response = await this._getExchangeRates();
+    getExchangeRates (_req: Request, res: Response) {
 
-        Api.ok(req, res, response);
+        // this.getExchangeRates3().then((response: Test) => {
+        //     console.log(response);
+        // });
+
+        this.test();
+
+        res.json({
+            test: 'test'
+        });
+    }
+
+    test () {
+        console.log('test');
+    }
+
+    async getExchangeRates2 (req: Request, res: Response) {
+
+        try {
+
+            this.getExchangeRates3().then((response: Test) => {
+
+                Api.ok(req, res, response);
+            });
+
+        } catch (e) {
+
+            Api.error(req, res);
+        }
     }
 
     @Get('/')
-    private async _getExchangeRates (): Promise<Test> {
+    async getExchangeRates3 (): Promise<Test> {
 
         const response: Test = {
             message: 'test'

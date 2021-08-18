@@ -1,4 +1,4 @@
-2. Swagger, https://rsbh.dev/blog/rest-api-with-express-typescript
-3. Cors
-4. Implement exchange-rates
+3. This scope problem.. so separate controllers and business logics
+4. Cors
+
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev

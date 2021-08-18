@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "concurrently \"npm:nodemon:start\" \"npm:nodemon:swagger\"",
-    "nodemon:start": "nodemon --watch src --delay 1 src/app.ts",
-    "nodemon:swagger": "nodemon --watch src --delay 1 -x tsoa spec",
+    "nodemon:start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "nodemon:swagger": "nodemon --watch 'src/**/*.ts' -x tsoa spec",
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
     "build": "tsc -p .",
