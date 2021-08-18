@@ -25,7 +25,7 @@
 		"title": "my-assets-services",
 		"version": "1.0.0",
 		"license": {
-			"name": "ISC"
+			"name": "GPL-3.0"
 		},
 		"contact": {}
 	},

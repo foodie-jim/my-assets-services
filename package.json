@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "concurrently \"nodemon src/app.ts\" \"nodemon -x tsoa spec\"",
+    "dev": "concurrently \"npm:nodemon:start\" \"npm:nodemon:swagger\"",
+    "nodemon:start": "nodemon --watch src --delay 1 src/app.ts",
+    "nodemon:swagger": "nodemon --watch src --delay 1 -x tsoa spec",
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
     "build": "tsc -p .",
@@ -13,7 +15,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "@types/morgan": "^1.9.3",
     "express": "^4.17.1",
@@ -27,7 +29,6 @@
     "@types/swagger-ui-express": "^4.1.3",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
-    "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.0",
