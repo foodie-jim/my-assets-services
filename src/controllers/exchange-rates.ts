@@ -29,9 +29,13 @@ class ExchangeRates implements IApiController {
     @Get('/')
     private async _getExchangeRates (): Promise<Test> {
 
-        return {
+        const response: Test = {
             message: 'test'
         };
+
+        return new Promise<Test>((resolve) => {
+            resolve(response);
+        });
     }
 }
 
