@@ -33,7 +33,7 @@
 	"paths": {
 		"/api/exchange-rates": {
 			"get": {
-				"operationId": "GetExchangeRates2",
+				"operationId": "_getExchangeRates",
 				"responses": {
 					"200": {
 						"description": "Ok",
