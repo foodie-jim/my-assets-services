@@ -1,5 +1,5 @@
-import ExchangeRates from './exchange-rates';
+import ExchangeRatesRouter from './exchange-rates';
 
 export default [
-    ExchangeRates,
+    ExchangeRatesRouter,
 ];

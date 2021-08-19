@@ -2,7 +2,7 @@ import { Get, Route } from 'tsoa';
 import ExchangeRateModel from '../models/exchange-rates';
 
 @Route('/api/exchange-rates')
-class ExchangeRates {
+class ExchangeRatesController {
 
     @Get('/')
     async getExchangeRates (): Promise<ExchangeRateModel> {
@@ -12,10 +12,10 @@ class ExchangeRates {
         };
 
         return new Promise<ExchangeRateModel>((resolve) => {
-            
+
             resolve(response);
         });
     }
 }
 
-export default ExchangeRates;
+export default ExchangeRatesController;
