@@ -1,4 +1,3 @@
-3. This scope problem.. so separate controllers and business logics
 4. Cors
 
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev

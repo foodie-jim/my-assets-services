@@ -1,9 +1,8 @@
 import { Router } from 'express';
 
-interface IApiController {
-    
+interface IRouter {
     router: Router;
     service: string;
 }  
  
-export default IApiController;
+export default IRouter;
