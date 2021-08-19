@@ -8,11 +8,11 @@ class ExchangeRatesRouter implements IRouter {
 
     router: Router = Router();
     service: string = '/api/exchange-rates';
-
-    controller: ExchangeRatesController = new ExchangeRatesController();
+    controller: ExchangeRatesController;
 
     constructor() {
         
+        this.controller = new ExchangeRatesController();
         this.router.get('/', this.getExchangeRates);
     }
 
