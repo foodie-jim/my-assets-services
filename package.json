@@ -3,9 +3,9 @@
   "author": "Jim Kim <hjman.kim@gmail.com> (http://https://my-assets-runner-rypg66fkzq-uc.a.run.app)",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node dist/app.js",
+    "start": "node dist/app.js",
     "dev": "concurrently \"npm:nodemon:start\" \"npm:nodemon:swagger\"",
     "nodemon:start": "cross-env NODE_ENV=development nodemon --exec ts-node src/app.ts",
     "nodemon:swagger": "nodemon --watch 'src/**/*.ts' -x tsoa spec",
