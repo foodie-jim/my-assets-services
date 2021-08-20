@@ -17,9 +17,9 @@ const Api = {
 
         res.status(status.OK).json(body || null);        
     },
-    error(_req: Request, res: Response) {
+    error(_req: Request, res: Response, error: any) {
 
-        res.status(status.SERVER_ERROR);
+        res.status(status.SERVER_ERROR).json(error);
     }
 }
 

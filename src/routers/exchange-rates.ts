@@ -3,20 +3,21 @@ import IRouter from './router';
 import Api from './api';
 import ExchangeRatesController from '../controllers/exchange-rates';
 import ExchangeRateModel from '../models/exchange-rates';
+import Logger from '../configurations/logger';
 
 class ExchangeRatesRouter implements IRouter {
 
-    router: Router = Router();
-    service: string = '/api/exchange-rates';
-    controller: ExchangeRatesController;
+    public router: Router = Router();
+    public service: string = '/api/exchange-rates';
+    private controller: ExchangeRatesController;
 
     constructor() {
-        
+
         this.controller = new ExchangeRatesController();
-        this.router.get('/', this.getExchangeRates);
+        this.router.get('/', this.getExchangeRates.bind(this));
     }
 
-    async getExchangeRates (req: Request, res: Response) {
+    async getExchangeRates(req: Request, res: Response) {
 
         try {
 
@@ -25,9 +26,10 @@ class ExchangeRatesRouter implements IRouter {
                 Api.ok(req, res, response);
             });
 
-        } catch (e) {
+        } catch (error: any) {
 
-            Api.error(req, res);
+            Logger.error('[ExchangeRatesRouter] getExchangeRates');
+            Api.error(req, res, error);
         }
     }
 }

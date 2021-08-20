@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import morganMiddleware from './configurations/morgan-middleware';
-import routers from './routers';
+import * as routers from './routers';
 import swaggerUi from 'swagger-ui-express';
 
 const app = express();
@@ -28,7 +28,7 @@ app.get('/', (_req: Request, res: Response) => {
     res.send('my-assets-services is running');
 });
 
-for (let router of routers) {
+for (let router of Object.values(routers)) {
     
     const apiRouter = new router();
     app.use(apiRouter.service, apiRouter.router);
