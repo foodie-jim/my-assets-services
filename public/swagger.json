@@ -27,7 +27,11 @@
 		"license": {
 			"name": "GPL-3.0"
 		},
-		"contact": {}
+		"contact": {
+			"name": "Jim Kim ",
+			"email": "hjman.kim@gmail.com",
+			"url": "http://https://my-assets-runner-rypg66fkzq-uc.a.run.app"
+		}
 	},
 	"openapi": "3.0.0",
 	"paths": {
