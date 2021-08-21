@@ -1,6 +1,8 @@
-import express, { Request, Response } from 'express'
-import morganMiddleware from './configurations/morgan-middleware';
 import * as routers from './routers';
+
+import express, { Request, Response } from 'express'
+
+import morganMiddleware from './configurations/morgan-middleware';
 import swaggerUi from 'swagger-ui-express';
 
 const app = express();

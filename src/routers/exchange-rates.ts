@@ -1,8 +1,9 @@
 import { Request, Response, Router } from "express";
-import IRouter from './router';
+
 import Api from './api';
-import ExchangeRatesController from '../controllers/exchange-rates';
 import ExchangeRateModel from '../models/exchange-rates';
+import ExchangeRatesController from '../controllers/exchange-rates';
+import IRouter from './router';
 import Logger from '../configurations/logger';
 
 class ExchangeRatesRouter implements IRouter {
