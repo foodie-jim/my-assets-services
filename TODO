@@ -1,3 +1,5 @@
 4. Cors
+5. get exchange-rates data from INTERNET
+6. exchange-rates data-model
 
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev
