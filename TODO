@@ -1,5 +1,8 @@
 4. Cors
 5. get exchange-rates data from INTERNET
+   하나은행 API - https://hanafnapimarket.com/#/apis/guide?ctgrCd=hbk00004
+   NPM Package https://www.npmjs.com/package/yahoo-finance
+   
 6. exchange-rates data-model
 
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev
