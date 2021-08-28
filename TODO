@@ -1,4 +1,3 @@
-4. Cors
 5. get exchange-rates data from INTERNET
    하나은행 API - https://hanafnapimarket.com/#/apis/guide?ctgrCd=hbk00004
    NPM Package https://www.npmjs.com/package/yahoo-finance

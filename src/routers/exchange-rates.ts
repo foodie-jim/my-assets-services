@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express";
-
 import Api from './api';
 import ExchangeRateModel from '../models/exchange-rates';
 import ExchangeRatesController from '../controllers/exchange-rates';

@@ -1,5 +1,4 @@
 import { Get, Route } from 'tsoa';
-
 import ExchangeRateModel from '../models/exchange-rates';
 import Logger from '../configurations/logger';
 
