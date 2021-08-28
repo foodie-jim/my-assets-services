@@ -1,3 +1,6 @@
+4. CORS 에서 리턴값이 잘 안가는듯.
+4.1. CORS와 Swagger가 동시에 잘 작동안함
+
 5. get exchange-rates data from INTERNET
    하나은행 API - https://hanafnapimarket.com/#/apis/guide?ctgrCd=hbk00004
    NPM Package https://www.npmjs.com/package/yahoo-finance
