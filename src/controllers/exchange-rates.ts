@@ -21,7 +21,7 @@ class ExchangeRatesController {
         // example of getting USD/KRW exchange-rates
         yahooFinance.historical(
           {
-            symbol: "KRW=X",
+            symbol: "DX-Y.NYB",
             from: "2021-08-01T00:00:00.000Z",
             to: "2021-08-31T23:59:59.999Z",
             period: "d", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
@@ -30,6 +30,18 @@ class ExchangeRatesController {
             console.log(quotes);
           }
         );
+
+        yahooFinance.historical(
+            {
+              symbol: "KRW=X",
+              from: "2021-08-01T00:00:00.000Z",
+              to: "2021-08-31T23:59:59.999Z",
+              period: "d", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
+            },
+            function (_err: unknown, quotes: object) {
+              console.log(quotes);
+            }
+          );
 
         return new Promise<ExchangeRateModel>((resolve) => {
 
