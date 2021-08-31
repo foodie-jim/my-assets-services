@@ -18,14 +18,14 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@types/morgan": "^1.9.3",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.1.6",
     "tsoa": "^3.9.0",
-    "winston": "^3.3.3",
-    "yahoo-finance": "^0.3.7"
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

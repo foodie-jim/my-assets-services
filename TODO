@@ -1,10 +1,10 @@
-4. CORS 에서 리턴값이 잘 안가는듯.
-4.1. CORS와 Swagger가 동시에 잘 작동안함
-
 5. get exchange-rates data from INTERNET
    하나은행 API - https://hanafnapimarket.com/#/apis/guide?ctgrCd=hbk00004
    NPM Package https://www.npmjs.com/package/yahoo-finance
-   
+
+5. 신한은행 API, 현재 기관등록 대기중
+   https://openapi.shinhan.com/apis
+
 6. exchange-rates data-model
 
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev
