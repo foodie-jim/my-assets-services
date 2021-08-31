@@ -1,9 +1,4 @@
-5. get exchange-rates data from INTERNET
-   하나은행 API - https://hanafnapimarket.com/#/apis/guide?ctgrCd=hbk00004
-   NPM Package https://www.npmjs.com/package/yahoo-finance
-
-5. 신한은행 API, 현재 기관등록 대기중
-   https://openapi.shinhan.com/apis
+5. Get Dollar index
 
 6. exchange-rates data-model
 

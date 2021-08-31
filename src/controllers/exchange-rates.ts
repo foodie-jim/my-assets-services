@@ -1,52 +1,35 @@
 import { Get, Route } from 'tsoa';
 import ExchangeRateModel from '../models/exchange-rates';
-import HttpClient from './http-client';
 import Logger from '../configurations/logger';
+ 
+const yahooFinance = require('yahoo-finance');
 
-// TODO Find exchange rates, dollar index API
+// TODO dollar index API
 
 @Route('/api/exchange-rates')
 class ExchangeRatesController {
-
-    private client: HttpClient;
-
-    constructor() {
-
-        // this.client = new HttpClient(process.env.NAVER_FINAANCE_URL || 'https://finance.naver.com');
-        this.client = new HttpClient();
-    }
 
     @Get('/')
     async getExchangeRates (): Promise<ExchangeRateModel> {
 
         Logger.debug('[ExchangeRatesController] getExchangeRates');
 
-        try {
-          // https://api.finance.naver.com/siseJson.naver?symbol=005930&requestType=1&startTime=20140817&endTime=20210605&timeframe=week
-          
-        //   this.client
-        //     .get('https/siseJson.naver?symbol=005930&requestType=1&startTime=20140817&endTime=20210605&timeframe=week', {
-        //       symbol: '005930',
-        //       requestType: 1,
-        //       startTime: 20140817,
-        //       endTime: 20210605,
-        //       timeframe: 'week',
-        //     })
-        this.client
-          .get(
-            "https://api.finance.naver.com/siseJson.naver?symbol=005930&requestType=1&startTime=20140817&endTime=20210605&timeframe=week"
-          )
-          .then((response) => {
-            Logger.debug("[ExchangeRatesController] Done");
-            Logger.debug(response);
-          });
-        } catch (error) {
-            Logger.error('[ExchangeRatesController]', error);
-        }
-
         const response: ExchangeRateModel = {
             message: 'test'
         };
+
+        // example of getting USD/KRW exchange-rates
+        yahooFinance.historical(
+          {
+            symbol: "KRW=X",
+            from: "2021-08-01T00:00:00.000Z",
+            to: "2021-08-31T23:59:59.999Z",
+            period: "d", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
+          },
+          function (_err: unknown, quotes: object) {
+            console.log(quotes);
+          }
+        );
 
         return new Promise<ExchangeRateModel>((resolve) => {
 
