@@ -1,6 +1,6 @@
+import { ExchangeRateResponseModel } from "../models/exchange-rates";
 import { Request, Response, Router } from "express";
 import Api from './api';
-import ExchangeRateModel from '../models/exchange-rates';
 import ExchangeRatesController from '../controllers/exchange-rates';
 import IRouter from './router';
 import Logger from '../configurations/logger';
@@ -21,7 +21,12 @@ class ExchangeRatesRouter implements IRouter {
 
         try {
 
-            this.controller.getExchangeRates().then((response: ExchangeRateModel) => {
+            const symbol = req.query.symbol as string;
+            const from = new Date(req.query.from as string);
+            const to = new Date(req.query.to as string);
+            const period = req.query.period as string;
+
+            this.controller.getExchangeRates(symbol, from, to, period).then((response: ExchangeRateResponseModel) => {
 
                 Api.ok(req, res, response);
             });

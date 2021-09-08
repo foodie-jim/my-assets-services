@@ -6,14 +6,64 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"ExchangeRateModel": {
+			"Quote": {
 				"properties": {
-					"message": {
+					"date": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"open": {
+						"type": "number",
+						"format": "double"
+					},
+					"high": {
+						"type": "number",
+						"format": "double"
+					},
+					"low": {
+						"type": "number",
+						"format": "double"
+					},
+					"close": {
+						"type": "number",
+						"format": "double"
+					},
+					"adjClose": {
+						"type": "number",
+						"format": "double"
+					},
+					"volumn": {
+						"type": "number",
+						"format": "double"
+					},
+					"symbol": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"message"
+					"date",
+					"open",
+					"high",
+					"low",
+					"close",
+					"adjClose",
+					"volumn",
+					"symbol"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ExchangeRateResponseModel": {
+				"properties": {
+					"quotes": {
+						"items": {
+							"$ref": "#/components/schemas/Quote"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"quotes"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -44,14 +94,54 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ExchangeRateModel"
+									"$ref": "#/components/schemas/ExchangeRateResponseModel"
 								}
 							}
 						}
 					}
 				},
+				"description": "symbol: TICKER\r\nperiod: \"d\", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)",
 				"security": [],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "query",
+						"name": "symbol",
+						"required": false,
+						"schema": {
+							"default": "DX-Y.NYB",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "from",
+						"required": false,
+						"schema": {
+							"default": "2021-09-08T07:12:26.249Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "to",
+						"required": false,
+						"schema": {
+							"default": "2021-09-08T07:12:26.249Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"default": "d",
+							"type": "string"
+						}
+					}
+				]
 			}
 		}
 	},
