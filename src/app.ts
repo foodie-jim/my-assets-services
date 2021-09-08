@@ -1,8 +1,8 @@
-import * as routers from './routers';
-import cors from 'cors';
-import express, { Request, Response } from 'express'
-import morganMiddleware from './configurations/morgan-middleware';
-import swaggerUi from 'swagger-ui-express';
+import * as routers from "./routers";
+import cors from "cors";
+import express, { Request, Response } from "express";
+import morganMiddleware from "./configurations/morgan-middleware";
+import swaggerUi from "swagger-ui-express";
 
 const app = express();
 
@@ -17,27 +17,26 @@ app.use(express.static("public"));
 app.use(cors());
 
 app.use(
-    "/docs",
-    swaggerUi.serve,
-    swaggerUi.setup(undefined, {
-        swaggerOptions: {
-            url: "/swagger.json",
-        },
-    })
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, {
+    swaggerOptions: {
+      url: "/swagger.json",
+    },
+  })
 );
 
-app.get('/', (_req: Request, res: Response) => {
-
-    res.send('my-assets-services is running');
+app.get("/", (_req: Request, res: Response) => {
+  res.send("my-assets-services is running");
 });
 
 for (let router of Object.values(routers)) {
-    
-    const apiRouter = new router();
-    app.use(apiRouter.service, apiRouter.router);
+  const apiRouter = new router();
+  app.use(apiRouter.service, apiRouter.router);
 }
 
 app.listen(process.env.PORT || 4000, () => {
-
-    console.log(`my-assets-services is running on the port: ${process.env.PORT || 4000}`);
+  console.log(
+    `my-assets-services is running on the port: ${process.env.PORT || 4000}`
+  );
 });

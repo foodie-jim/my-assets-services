@@ -1,5 +1,3 @@
-import ExchangeRatesRouter from './exchange-rates';
+import ExchangeRatesRouter from "./exchange-rates";
 
-export {
-    ExchangeRatesRouter,
-};
+export { ExchangeRatesRouter };

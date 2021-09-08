@@ -1,5 +1,5 @@
-import Logger from '../configurations/logger';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import Logger from "../configurations/logger";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class HttpClient {
   protected readonly instance: AxiosInstance;
