@@ -14,14 +14,14 @@ class ExchangeRatesController {
    */
   @Get("/")
   async getExchangeRates(
-    @Query() symbol: string = "DX-Y.NYB",
     @Query() from: Date = new Date(),
     @Query() to: Date = new Date(),
+    @Query() symbols: Array<string> = ["DX-Y.NYB", "KRW=X"],
     @Query() period: string = "d"
   ): Promise<ExchangeRateResponseModel> {
     Logger.debug("[ExchangeRatesController] getExchangeRates");
 
-    const result = await this.getHistoricalData(symbol, from, to, period);
+    const result = await this.getHistoricalData(symbols, from, to, period);
 
     return new Promise<ExchangeRateResponseModel>((resolve) => {
       resolve(result);
@@ -29,51 +29,32 @@ class ExchangeRatesController {
   }
 
   private async getHistoricalData(
-    symbol: string,
+    symbols: Array<string>,
     from: Date,
     to: Date,
     period: string
   ): Promise<ExchangeRateResponseModel> {
     const response = await yahooFinance.historical({
-      symbol,
+      symbols,
       from: from.toISOString(),
       to: to.toISOString(),
       period,
     });
 
-    const quotes = response.filter((quote: Quote) => {
-      if (quote.close !== null) return true;
-
-      return false;
-    });
-
     const result: ExchangeRateResponseModel = {
-      quotes,
+      quotes: [],
     };
 
-    // yahooFinance.historical(
-    //   {
-    //     symbol: "DX-Y.NYB",
-    //     from: "2021-08-01T00:00:00.000Z",
-    //     to: "2021-08-31T23:59:59.999Z",
-    //     period: "d", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
-    //   },
-    //   function (_err: unknown, quotes: object) {
-    //     console.log(quotes);
-    //   }
-    // );
+    for (const symbol of symbols) {
+      result.quotes.push({
+        symbol,
+        value: await response[symbol].filter((quote: Quote) => {
+          if (quote.close !== null) return true;
 
-    // yahooFinance.historical(
-    //     {
-    //       symbol: "KRW=X",
-    //       from: "2021-08-01T00:00:00.000Z",
-    //       to: "2021-08-31T23:59:59.999Z",
-    //       period: "d", // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
-    //     },
-    //     function (_err: unknown, quotes: object) {
-    //       console.log(quotes);
-    //     }
-    // );
+          return false;
+        }),
+      });
+    }
 
     return result;
   }

@@ -57,7 +57,22 @@
 				"properties": {
 					"quotes": {
 						"items": {
-							"$ref": "#/components/schemas/Quote"
+							"properties": {
+								"value": {
+									"items": {
+										"$ref": "#/components/schemas/Quote"
+									},
+									"type": "array"
+								},
+								"symbol": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"value",
+								"symbol"
+							],
+							"type": "object"
 						},
 						"type": "array"
 					}
@@ -105,19 +120,10 @@
 				"parameters": [
 					{
 						"in": "query",
-						"name": "symbol",
-						"required": false,
-						"schema": {
-							"default": "DX-Y.NYB",
-							"type": "string"
-						}
-					},
-					{
-						"in": "query",
 						"name": "from",
 						"required": false,
 						"schema": {
-							"default": "2021-09-08T07:18:46.943Z",
+							"default": "2021-09-08T08:14:59.731Z",
 							"format": "date-time",
 							"type": "string"
 						}
@@ -127,9 +133,24 @@
 						"name": "to",
 						"required": false,
 						"schema": {
-							"default": "2021-09-08T07:18:46.943Z",
+							"default": "2021-09-08T08:14:59.731Z",
 							"format": "date-time",
 							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "symbols",
+						"required": false,
+						"schema": {
+							"default": [
+								"DX-Y.NYB",
+								"KRW=X"
+							],
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					},
 					{

@@ -17,13 +17,19 @@ class ExchangeRatesRouter implements IRouter {
 
   async getExchangeRates(req: Request, res: Response) {
     try {
-      const symbol = req.query.symbol as string;
-      const from = new Date(req.query.from as string);
-      const to = new Date(req.query.to as string);
-      const period = req.query.period as string;
+
+      const currentDate = new Date();
+      const from = new Date(req.query.from as string || currentDate.getTime());
+      const to = new Date(req.query.to as string || currentDate.getTime());
+      let symbols = req.query.symbols as Array<string> || ["DX-Y.NYB", "KRW=X"];
+      const period = req.query.period as string || "d";
+
+      if (typeof req.query.symbols === "string") {
+        symbols = [req.query.symbols];
+      }
 
       this.controller
-        .getExchangeRates(symbol, from, to, period)
+        .getExchangeRates(from, to, symbols, period)
         .then((response: ExchangeRateResponseModel) => {
           Api.ok(req, res, response);
         });

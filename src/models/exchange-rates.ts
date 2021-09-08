@@ -1,5 +1,8 @@
 interface ExchangeRateResponseModel {
-  quotes: Array<Quote>;
+  quotes: Array<{
+    symbol: string;
+    value: Array<Quote>;
+  }>;
 }
 
 interface Quote {
@@ -13,11 +16,4 @@ interface Quote {
   symbol: string;
 }
 
-interface ExchangeRateRequestModel {
-  symbol: string;
-  from: Date;
-  to: Date;
-  period: string;
-}
-
-export { ExchangeRateResponseModel, ExchangeRateRequestModel, Quote };
+export { ExchangeRateResponseModel, Quote };
