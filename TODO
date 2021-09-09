@@ -1,5 +1,1 @@
-5. Get Dollar index
-
-6. exchange-rates data-model
-
 50. NPM concurrently, if user kill Thread, node processes do not terminated. So it fails to bind port again when user restart dev

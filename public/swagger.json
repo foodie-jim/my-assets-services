@@ -123,7 +123,7 @@
 						"name": "from",
 						"required": false,
 						"schema": {
-							"default": "2021-09-08T08:14:59.731Z",
+							"default": "2021-09-09T09:03:58.306Z",
 							"format": "date-time",
 							"type": "string"
 						}
@@ -133,7 +133,7 @@
 						"name": "to",
 						"required": false,
 						"schema": {
-							"default": "2021-09-08T08:14:59.731Z",
+							"default": "2021-09-09T09:03:58.306Z",
 							"format": "date-time",
 							"type": "string"
 						}

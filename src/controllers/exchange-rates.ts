@@ -4,8 +4,6 @@ import Logger from "../configurations/logger";
 
 const yahooFinance = require("yahoo-finance");
 
-// TODO dollar index API
-
 @Route("/api/exchange-rates")
 class ExchangeRatesController {
   /**
