@@ -14,8 +14,8 @@ class ExchangeRatesController {
   async getExchangeRates(
     @Query() from: Date = new Date(),
     @Query() to: Date = new Date(),
-    @Query() symbols: Array<string> = ["DX-Y.NYB", "KRW=X"],
-    @Query() period: string = "d"
+    @Query() period: string = "d",
+    symbols: Array<string> = ["DX-Y.NYB", "KRW=X"],
   ): Promise<ExchangeRateResponseModel> {
     Logger.debug("[ExchangeRatesController] getExchangeRates");
 
@@ -40,18 +40,22 @@ class ExchangeRatesController {
     });
 
     const result: ExchangeRateResponseModel = {
-      quotes: [],
+      dollarIndex: new Array<Quote>(),
+      exchangeRates: new Array<Quote>(),
     };
 
     for (const symbol of symbols) {
-      result.quotes.push({
-        symbol,
-        value: await response[symbol].filter((quote: Quote) => {
-          if (quote.close !== null) return true;
+      const quotes = await response[symbol].filter((quote: Quote) => {
+        if (quote.close !== null) return true;
 
-          return false;
-        }),
+        return false;
       });
+
+      if (symbol === "DX-Y.NYB") {
+        result.dollarIndex.push(...quotes);
+      } else if (symbol === "KRW=X") {
+        result.exchangeRates.push(...quotes);
+      }
     }
 
     return result;

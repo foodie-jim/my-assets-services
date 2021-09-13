@@ -21,15 +21,11 @@ class ExchangeRatesRouter implements IRouter {
       const currentDate = new Date();
       const from = new Date(req.query.from as string || currentDate.getTime());
       const to = new Date(req.query.to as string || currentDate.getTime());
-      let symbols = req.query.symbols as Array<string> || ["DX-Y.NYB", "KRW=X"];
+      const symbols = ["DX-Y.NYB", "KRW=X"];
       const period = req.query.period as string || "d";
 
-      if (typeof req.query.symbols === "string") {
-        symbols = [req.query.symbols];
-      }
-
       this.controller
-        .getExchangeRates(from, to, symbols, period)
+        .getExchangeRates(from, to, period, symbols)
         .then((response: ExchangeRateResponseModel) => {
           Api.ok(req, res, response);
         });

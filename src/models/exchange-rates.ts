@@ -1,8 +1,6 @@
 interface ExchangeRateResponseModel {
-  quotes: Array<{
-    symbol: string;
-    value: Array<Quote>;
-  }>;
+  dollarIndex: Array<Quote>;
+  exchangeRates: Array<Quote>;
 }
 
 interface Quote {
@@ -16,4 +14,4 @@ interface Quote {
   symbol: string;
 }
 
-export { ExchangeRateResponseModel, Quote };
+export type { ExchangeRateResponseModel, Quote };
