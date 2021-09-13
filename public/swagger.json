@@ -55,30 +55,22 @@
 			},
 			"ExchangeRateResponseModel": {
 				"properties": {
-					"quotes": {
+					"dollarIndex": {
 						"items": {
-							"properties": {
-								"value": {
-									"items": {
-										"$ref": "#/components/schemas/Quote"
-									},
-									"type": "array"
-								},
-								"symbol": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"value",
-								"symbol"
-							],
-							"type": "object"
+							"$ref": "#/components/schemas/Quote"
+						},
+						"type": "array"
+					},
+					"exchangeRates": {
+						"items": {
+							"$ref": "#/components/schemas/Quote"
 						},
 						"type": "array"
 					}
 				},
 				"required": [
-					"quotes"
+					"dollarIndex",
+					"exchangeRates"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -123,7 +115,7 @@
 						"name": "from",
 						"required": false,
 						"schema": {
-							"default": "2021-09-13T08:05:59.932Z",
+							"default": "2021-09-13T08:42:55.793Z",
 							"format": "date-time",
 							"type": "string"
 						}
@@ -133,8 +125,17 @@
 						"name": "to",
 						"required": false,
 						"schema": {
-							"default": "2021-09-13T08:05:59.933Z",
+							"default": "2021-09-13T08:42:55.793Z",
 							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"default": "d",
 							"type": "string"
 						}
 					},
@@ -151,15 +152,6 @@
 							"items": {
 								"type": "string"
 							}
-						}
-					},
-					{
-						"in": "query",
-						"name": "period",
-						"required": false,
-						"schema": {
-							"default": "d",
-							"type": "string"
 						}
 					}
 				]

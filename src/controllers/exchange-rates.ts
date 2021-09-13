@@ -15,7 +15,7 @@ class ExchangeRatesController {
     @Query() from: Date = new Date(),
     @Query() to: Date = new Date(),
     @Query() period: string = "d",
-    symbols: Array<string> = ["DX-Y.NYB", "KRW=X"],
+    @Query() symbols: Array<string> = ["DX-Y.NYB", "KRW=X"],
   ): Promise<ExchangeRateResponseModel> {
     Logger.debug("[ExchangeRatesController] getExchangeRates");
 
