@@ -19,8 +19,8 @@ class ExchangeRatesRouter implements IRouter {
     try {
 
       const currentDate = new Date();
-      const from = new Date(req.query.from as string || currentDate.getTime());
-      const to = new Date(req.query.to as string || currentDate.getTime());
+      const to = new Date(req.query.to as string || currentDate);
+      const from = new Date(req.query.from as string || currentDate.setMonth(currentDate.getMonth() - 1));
       const symbols = ["DX-Y.NYB", "KRW=X"];
       const period = req.query.period as string || "d";
 

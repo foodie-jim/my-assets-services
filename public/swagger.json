@@ -115,7 +115,7 @@
 						"name": "from",
 						"required": false,
 						"schema": {
-							"default": "2021-09-13T08:42:55.793Z",
+							"default": "2021-10-01T09:00:29.178Z",
 							"format": "date-time",
 							"type": "string"
 						}
@@ -125,7 +125,7 @@
 						"name": "to",
 						"required": false,
 						"schema": {
-							"default": "2021-09-13T08:42:55.793Z",
+							"default": "2021-10-01T09:00:29.179Z",
 							"format": "date-time",
 							"type": "string"
 						}
